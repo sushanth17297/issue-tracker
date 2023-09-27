@@ -4,6 +4,13 @@ A full stack app, which helps to track issues/bugs for the Project.
 ## Tech Stack
 Nodejs , Express, Mongodb , EJS , javaScript , html, css
 
+## How to setup the project on local system
+Clone this project from https://github.com/sushanth17297/issue-tracker
+Start by installing npm if you don't have it already.
+Navigate to Project Directory and run the following the command, After that visit in your local browser- http://localhost:8000/
+     npm install
+     node index.js
+
 ## Features
   
   ### Home Page 
