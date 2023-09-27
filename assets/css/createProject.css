@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #818589;
+    background-color: #000000;
     padding: 25px 0;
 }
 
 .createProjectForm {
+    margin-top: 50px;
     min-width: 500px;
 }

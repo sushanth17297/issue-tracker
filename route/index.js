@@ -6,4 +6,4 @@ router.get('/', (req,res)=>{res.redirect('/issueTracker')})
 
 router.use('/issueTracker', issueTrackerPath)
 
-module.exports = router;
+module.exports = router;   
