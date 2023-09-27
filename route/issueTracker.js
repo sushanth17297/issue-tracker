@@ -1,5 +1,5 @@
 const express = require('express');
-const { issueTrackerPage, createProject, addProjectToMongoDB, projectDetails, filterProjectDetails, createAnIssue, addAnIssue } = require('../controller/issueController');
+const { issueTrackerPage, createProject, addProjectToMongoDB, projectDetails, filterProjectDetails, createAnIssue, addAnIssue } = require('../mongo/mongoUtil');
 const router = express.Router();
 
 router.get('/', issueTrackerPage)

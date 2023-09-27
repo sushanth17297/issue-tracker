@@ -2,6 +2,7 @@ const { ObjectId } = require('mongodb');
 const mongoDB = require('../database/config/mongodb')
 
 function filterBy(filter, projectDetails) {
+    //filter is applied i the project details based on Title/ Description/ Author.
     switch (filter) {
         case 'Title':
             for (let check = 0; check < projectDetails.length; ++check) {
@@ -49,21 +50,26 @@ function filterBy(filter, projectDetails) {
 }
 
 module.exports.issueTrackerPage = async (req, res) => {
+    // this is called when the home page loaded.
     const collection = await mongoDB();
     const addedProject = await collection.find({ id: 'addedProject' }).toArray();
+     // all the projects will loaded from DB
     return res.render('issueTracker', {
+        // home page is rendered
         title: "Issue Tracker",
         addedProject
     })
 }
 
 module.exports.createProject = (req, res) => {
+    //create project page is rendered
     return res.render('createProject', {
         title: "Create Project"
     })
 }
 
 module.exports.addProjectToMongoDB = async (req, res) => {
+    //post request to create project is handled and will be added to the DB.
     let formData = req.body;
     formData = { ...formData, id: "addedProject" }
     const collection = await mongoDB();
@@ -77,6 +83,7 @@ module.exports.addProjectToMongoDB = async (req, res) => {
 }
 
 module.exports.projectDetails = async (req, res) => {
+    //it ll get the all the project details and render the details page.
     const collection = await mongoDB();
     let projectDetails = await collection.find({ id: 'addedProject' }).toArray();
     return res.render('projectDetails', {
@@ -86,6 +93,7 @@ module.exports.projectDetails = async (req, res) => {
 }
 
 module.exports.filterProjectDetails = async (req, res) => {
+    //filter is applied i the project details based on Title/ Description/ Author.
     const collection = await mongoDB();
     let projectDetails = await collection.find({ id: 'addedProject' }).toArray();
     const filterReq = req.body;
@@ -105,11 +113,13 @@ module.exports.filterProjectDetails = async (req, res) => {
 }
 
 module.exports.createAnIssue = async (req, res) => {
+    //loads issue creating page
     const issueId = req.params;
     return res.render('createIssue', { title: "Create Issue", issueId })
 }
 
 module.exports.addAnIssue = async (req, res) => {
+    //handles the post request from UI and stores the issue in the DB for the respective project.
     console.log(req.params);
     console.log(req.body);
     const issue = req.body;
